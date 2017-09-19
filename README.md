@@ -16,3 +16,6 @@ git add CNAME
 git commit
 git push dev gh-pages-dev:gh-pages --force
 ```
+
+## TODO
+* Use travis CI to push instead of doing it manually
