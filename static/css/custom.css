@@ -155,3 +155,8 @@
 		font-size: 3.0rem;
 	}
 }
+
+ul li {
+	list-style-position: outside;
+	margin-left: 1em;
+}
