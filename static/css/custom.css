@@ -160,3 +160,7 @@ ul li {
 	list-style-position: outside;
 	margin-left: 1em;
 }
+
+ul {
+	margin-bottom: 0;
+}
