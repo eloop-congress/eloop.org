@@ -3,6 +3,10 @@ body {
 	color: white;
 }
 
+.subline {
+	padding: 0.5em;
+}
+
 /* Funky borders */
 #page-border-top, #page-border-bottom, #page-border-left, #page-border-right {
 	background: #ff00ff;
