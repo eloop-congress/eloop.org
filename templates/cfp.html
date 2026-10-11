@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+{%- set ed = get_section(path=page.ancestors[-1]) %}
+<h1>{{ page.title }}</h1>
+{{<edition_line edition={ed} venues={config.extra.venues} />}}
+
+{{ page.content | safe }}
+
+<h2>Submission Guidelines</h2>
+<p>
+  Please follow the submission guidelines at <a href="{{ page.extra.guidelines }}">{{ page.extra.guidelines | replace(from="https://", to="") }}</a>.
+  Please send your submissions to <a href="mailto:{{ page.extra.submit_to }}">{{ page.extra.submit_to }}</a>.
+</p>
+
+<h2>Deadlines</h2>
+{{<deadlines cfp={page} />}}
+{% endblock %}

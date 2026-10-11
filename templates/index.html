@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block content %}
+{%- set ed = get_section(path=config.extra.current_edition ~ "/_index.md") %}
+{%- set cfp = get_page(path=config.extra.current_edition ~ "/cfp.md", allow_missing=true) %}
+{#- the switch happens at build time; the daily deploy keeps it current #}
+{%- set over = ed.extra?.date and ed.extra.date < now() | date(format="%Y-%m-%d") %}
+<p class="catchline">eloop</p>
+<p class="titleline">{{ config.extra.tagline }}</p>
+{{<sublines edition={ed} venues={config.extra.venues} />}}
+
+{{ section.content | safe }}
+
+{%- if over %}
+<h1><a href="{{ ed.permalink }}">{{ ed.title }}</a></h1>
+{{ ed.content | safe }}
+{%- set proceedings_path = ed.relative_path | replace(from="_index.md", to="proceedings/_index.md") %}
+{%- if proceedings_path in ed.subsections %}
+{%- set proceedings = get_section(path=proceedings_path) %}
+<h2><a href="{{ proceedings.permalink }}">Proceedings</a></h2>
+{{<papers proceedings={proceedings} />}}
+{%- endif %}
+{%- else %}
+<h1>Attend</h1>
+<p>{{ ed.extra?.attend or "" }}</p>
+{{<location edition={ed} venues={config.extra.venues} />}}
+<p>
+  Find us on Twitter: <a href="https://twitter.com/{{ config.extra.twitter }}">@{{ config.extra.twitter }}</a><br>
+  Official chat: {{ config.extra.irc }}
+</p>
+
+{%- if ed.extra?.schedule %}
+<h1>Schedule</h1>
+{{<schedule items={ed.extra.schedule} />}}
+{%- endif %}
+
+{%- if cfp %}
+<h1>Call for papers</h1>
+{{ cfp.content | safe }}
+<h2>Deadlines</h2>
+{{<deadlines cfp={cfp} />}}
+<p><a href="{{ cfp.permalink }}">Submission guidelines</a></p>
+{%- endif %}
+{%- endif %}
+
+<h1>Past editions</h1>
+{{<editions venues={config.extra.venues} skip={0 if over else config.extra.current_edition | int} />}}
+
+<h1>Sponsors</h1>
+<p>eloop is made possible by the following sponsors:</p>
+<ul>
+  {%- for s in config.extra.sponsors %}
+  <li><a href="{{ s.url }}">{{ s.name }}</a> - {{ s.description }}</li>
+  {%- endfor %}
+</ul>
+{% endblock %}

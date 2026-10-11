@@ -1,0 +1,47 @@
+base_url = "https://eloop.org"
+title = "eloop"
+description = "[[meta description for search engines and link previews, ~150 characters: what eloop is, where, how often — goal: a searcher can tell from the result snippet that this is the hackers-in-business conference]]"
+default_language = "en"
+compile_sass = true
+build_search_index = false
+generate_feeds = false
+
+[markdown]
+smart_punctuation = true
+
+[extra]
+tagline = "Hackers in business conference"
+# the edition the front page advertises
+current_edition = "2026"
+# the frame colour is picked at random from these on every page load
+accents = ["#ff0", "#0ff", "#f0f"]
+twitter = "eloop_congress"
+irc = "irc.hackint.org / #eloop"
+
+sponsors = [
+  { name = "AfRA Berlin", url = "https://www.afra-berlin.de", description = "A cozy hackerspace in Berlin" },
+  { name = "binaergewitter", url = "https://blog.binaergewitter.de/", description = "A podcast on web, technology and open source" },
+  { name = "krebs", url = "https://krebsco.de/", description = "A group of hackers originating from Stuttgart" },
+  { name = "shackspace", url = "https://shackspace.de/", description = "A large hackerspace in Stuttgart" },
+  { name = "c-base", url = "https://c-base.org/", description = "A reconstructed space station under Berlin" },
+  { name = "mathe.cafe", url = "https://mathe.cafe", description = "A social structure in the roof of the MA building of TU Berlin" },
+]
+
+[extra.venues.shackspace]
+name = "shackspace"
+url = "https://shackspace.de/"
+city = "Stuttgart"
+address = "Ulmer Straße 255, 70327 Stuttgart"
+directions = "U4/U9, Station \"Im Degen\""
+
+[extra.venues.afra]
+name = "AfRA"
+url = "https://www.afra-berlin.de"
+city = "Berlin"
+
+[extra.venues.c-base]
+name = "c-base"
+url = "https://c-base.org/"
+city = "Berlin"
+address = "Rungestr. 20, 10179 Berlin"
+directions = "5 minutes walk from S+U Jannowitzbrücke"
