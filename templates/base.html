@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {%- set page_title = page?.title ~ " – " ~ config.title if page?.title else section?.title or config.title %}
+  <title>{{ page_title }}</title>
+  <meta name="description" content="{{ page?.description or section?.description or config.description }}">
+  <meta property="og:title" content="{{ page_title }}">
+  <meta property="og:url" content="{{ current_url or config.base_url }}">
+  <link rel="icon" href="/static/images/favicon_2.png">
+  <link rel="stylesheet" href="{{ get_url(path='style.css', cachebust=true) }}">
+  <script>
+    const accents = {{ config.extra.accents | json_encode | safe }};
+    document.documentElement.style.setProperty("--accent", accents[Math.floor(Math.random() * accents.length)]);
+  </script>
+  {%- block head %}{% endblock %}
+</head>
+<body>
+  <div class="frame frame-left"></div>
+  <div class="frame frame-right"></div>
+  <div class="frame frame-top"></div>
+  <div class="frame frame-bottom"></div>
+
+  <div class="content">
+    {%- set current = config.extra.current_edition %}
+    {%- set path = current_path or "/" %}
+    <nav class="nav">
+      <a class="home" href="/"{% if path == "/" %} aria-current="page"{% endif %}>eloop</a>
+      <a href="/{{ current }}/"{% if path == "/" ~ current ~ "/" %} aria-current="page"{% endif %}>{{ current }}</a>
+      <a href="/{{ current }}/cfp/"{% if path == "/" ~ current ~ "/cfp/" %} aria-current="page"{% endif %}>Call for papers</a>
+      <a href="/editions/"{% if path == "/editions/" %} aria-current="page"{% endif %}>Editions</a>
+      <a href="/about/"{% if path == "/about/" %} aria-current="page"{% endif %}>About</a>
+    </nav>
+
+    <main>
+      {%- block content %}{% endblock %}
+    </main>
+
+    <footer>
+      <a href="https://twitter.com/{{ config.extra.twitter }}">@{{ config.extra.twitter }}</a>
+      <span>{{ config.extra.irc }}</span>
+      <a href="/code-of-conduct/">Code of conduct</a>
+      <a href="/imprint/">Imprint</a>
+      <a href="https://github.com/eloop-congress/eloop.org">Source</a>
+    </footer>
+  </div>
+</body>
+</html>

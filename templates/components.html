@@ -1,0 +1,95 @@
+{# components are hygienic: they only see their arguments, hence `venues` being passed around #}
+
+{% component when(edition) -%}
+  {%- if edition.extra?.date -%}{{ edition.extra.date | date(format="%-d %B %Y") }}
+  {%- elif edition.extra?.date_unknown -%}{{ edition.extra.year }}
+  {%- else -%}TBA {{ edition.extra.year }}{%- endif -%}
+{%- endcomponent when %}
+
+{% component venue(edition, venues) -%}
+  {%- set v = venues[edition.extra.venue] -%}
+  {{ v.name }} {{ v.city }}
+{%- endcomponent venue %}
+
+{# "eloop 2025, 1 November 2025, c-base Berlin" with a link to the edition #}
+{% component edition_line(edition, venues) -%}
+  <p class="meta"><a href="{{ edition.permalink }}">{{ edition.title }}</a>, {{<when edition={edition} />}}, {{<venue edition={edition} venues={venues} />}}</p>
+{%- endcomponent edition_line %}
+
+{% component sublines(edition, venues) %}
+  {%- set v = venues[edition.extra.venue] %}
+  <p class="subline">{{<when edition={edition} />}}<br><a href="{{ v.url }}">{{ v.name }}</a> {{ v.city }}</p>
+  {%- if edition.extra?.time %}
+  <p class="subline subline-small">{{ edition.extra.time }}{% if edition.extra?.utc_offset %}<br>{{ edition.extra.utc_offset }}{% endif %}</p>
+  {%- endif %}
+{% endcomponent sublines %}
+
+{% component location(edition, venues) %}
+  {%- set v = venues[edition.extra.venue] %}
+  {%- if v?.address %}
+  <p>
+    <a href="{{ v.url }}">{{ v.name }}</a>, {{ v.address }}
+    {%- if v?.directions %}<br>{{ v.directions }}{% endif %}
+  </p>
+  {%- endif %}
+{% endcomponent location %}
+
+{% component schedule(items) %}
+  <table>
+    <tr><th>Time</th><th>Description</th></tr>
+    {%- for item in items %}
+    <tr>
+      <td>{{ item.time }}</td>
+      <td>
+        {{ item.title }}
+        {%- if item?.abstract %}<p class="detail">{{ item.abstract }}</p>{% endif %}
+        {%- if item?.items %}
+        <ul class="detail">
+          {%- for sub in item.items %}<li>{{ sub }}</li>{% endfor %}
+        </ul>
+        {%- endif %}
+      </td>
+    </tr>
+    {%- endfor %}
+  </table>
+{% endcomponent schedule %}
+
+{% component deadlines(cfp) %}
+  {%- if cfp.extra?.deadlines %}
+  <ul>
+    {%- for d in cfp.extra.deadlines %}<li>{{ d.label }}: {{ d.date }}</li>{% endfor %}
+  </ul>
+  {%- else %}
+  <p>TBA</p>
+  {%- endif %}
+{% endcomponent deadlines %}
+
+{% component papers(proceedings) %}
+  <ul class="papers">
+    {%- for paper in proceedings.pages %}
+    <li>
+      {{ [a.name for a in paper.extra.authors] | join(sep=", ") }}: <a href="{{ paper.permalink }}">“{{ paper.title }}”</a>
+      [<a href="{{ paper.extra.pdf }}">PDF</a>]
+    </li>
+    {%- endfor %}
+  </ul>
+{% endcomponent papers %}
+
+{# all editions but `skip`, newest first #}
+{% component editions(venues, skip=0) %}
+  {%- set root = get_section(path="_index.md") %}
+  {%- set eds = [get_section(path=p) for p in root.subsections] | sort(attribute="extra.year") | reverse %}
+  <table>
+    <tr><th>Year</th><th>Date</th><th>Venue</th><th></th></tr>
+    {%- for ed in eds %}
+    {%- if ed.extra.year != skip %}
+    <tr>
+      <td><a href="{{ ed.permalink }}">{{ ed.extra.year }}</a></td>
+      <td>{{<when edition={ed} />}}</td>
+      <td>{{<venue edition={ed} venues={venues} />}}</td>
+      <td>{% if ed.subsections %}<a href="{{ ed.permalink }}proceedings/">Proceedings</a>{% endif %}</td>
+    </tr>
+    {%- endif %}
+    {%- endfor %}
+  </table>
+{% endcomponent editions %}
