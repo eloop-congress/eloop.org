@@ -7,12 +7,19 @@
 
 {{ page.content | safe }}
 
+{%- set over = ed.extra?.date and ed.extra.date < now() | date(format="%Y-%m-%d") %}
+{%- if page.extra?.guidelines %}
 <h2>Submission Guidelines</h2>
 <p>
   Please follow the submission guidelines at <a href="{{ page.extra.guidelines }}">{{ page.extra.guidelines | replace(from="https://", to="") }}</a>.
   Please send your submissions to <a href="mailto:{{ page.extra.submit_to }}">{{ page.extra.submit_to }}</a>.
 </p>
+{%- else %}
+<p><a href="mailto:{{ page.extra.submit_to }}">{{ page.extra.submit_to }}</a></p>
+{%- endif %}
 
+{%- if page.extra?.deadlines or not over %}
 <h2>Deadlines</h2>
 {{<deadlines cfp={page} />}}
+{%- endif %}
 {% endblock %}
