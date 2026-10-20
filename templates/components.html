@@ -7,8 +7,10 @@
 {%- endcomponent when %}
 
 {% component venue(edition, venues) -%}
+  {%- if edition.extra?.venue -%}
   {%- set v = venues[edition.extra.venue] -%}
   {{ v.name }} {{ v.city }}
+  {%- else -%}venue TBA{%- endif -%}
 {%- endcomponent venue %}
 
 {# "eloop 2025, 1 November 2025, c-base Berlin" with a link to the edition #}
@@ -17,20 +19,26 @@
 {%- endcomponent edition_line %}
 
 {% component sublines(edition, venues) %}
+  {%- if edition.extra?.venue %}
   {%- set v = venues[edition.extra.venue] %}
   <p class="subline">{{<when edition={edition} />}}<br><a href="{{ v.url }}">{{ v.name }}</a> {{ v.city }}</p>
+  {%- else %}
+  <p class="subline">{{<when edition={edition} />}}</p>
+  {%- endif %}
   {%- if edition.extra?.time %}
   <p class="subline subline-small">{{ edition.extra.time }}{% if edition.extra?.utc_offset %}<br>{{ edition.extra.utc_offset }}{% endif %}</p>
   {%- endif %}
 {% endcomponent sublines %}
 
 {% component location(edition, venues) %}
+  {%- if edition.extra?.venue %}
   {%- set v = venues[edition.extra.venue] %}
   {%- if v?.address %}
   <p>
     <a href="{{ v.url }}">{{ v.name }}</a>, {{ v.address }}
     {%- if v?.directions %}<br>{{ v.directions }}{% endif %}
   </p>
+  {%- endif %}
   {%- endif %}
 {% endcomponent location %}
 

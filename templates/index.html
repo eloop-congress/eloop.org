@@ -19,7 +19,9 @@
 {%- endif %}
 {%- else %}
 <h1>Attend</h1>
-<p>{{ ed.extra?.attend or "" }}</p>
+{%- if ed.extra?.attend %}
+<p>{{ ed.extra.attend }}</p>
+{%- endif %}
 {{<location edition={ed} venues={config.extra.venues} />}}
 <p>
   Find us on Twitter: <a href="https://twitter.com/{{ config.extra.twitter }}">@{{ config.extra.twitter }}</a><br>

@@ -12,7 +12,7 @@ smart_punctuation = true
 [extra]
 tagline = "Hackers in business conference"
 # the edition the front page advertises
-current_edition = "2026"
+current_edition = "2027"
 # the frame colour is picked at random from these on every page load
 accents = ["#ff0", "#0ff", "#f0f"]
 twitter = "eloop_congress"

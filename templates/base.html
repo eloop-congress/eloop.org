@@ -28,7 +28,10 @@
     <nav class="nav">
       <a class="home" href="/"{% if path == "/" %} aria-current="page"{% endif %}><img src="/static/images/logo.svg" alt="" class="logo">eloop</a>
       <a href="/{{ current }}/"{% if path == "/" ~ current ~ "/" %} aria-current="page"{% endif %}>{{ current }}</a>
+      {%- set current_edition = get_section(path=current ~ "/_index.md") %}
+      {%- if current_edition.extra?.cfp %}
       <a href="/{{ current }}/#cfp">Call for papers</a>
+      {%- endif %}
       <a href="/#past-editions">Editions</a>
       <a href="/about/"{% if path == "/about/" %} aria-current="page"{% endif %}>About</a>
     </nav>
