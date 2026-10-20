@@ -8,8 +8,8 @@ date = 2022-09-24
 venue = "c-base"
 +++
 
-[[short retrospective of eloop 2022: what happened, what stood out — goal: show visitors browsing the archive that the conference has been alive and active this year]]
+eloop did also happen in 2022.
 
 ## Talks
 
-[[list of talks given at eloop 2022, as "title (speaker)" entries, with links to recordings or slides where they exist — goal: a complete, citable archive of who presented what]]
+There were talks at eloop 2022, too.

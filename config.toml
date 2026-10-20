@@ -1,6 +1,6 @@
 base_url = "https://eloop.org"
 title = "eloop"
-description = "[[meta description for search engines and link previews, ~150 characters: what eloop is, where, how often — goal: a searcher can tell from the result snippet that this is the hackers-in-business conference]]"
+description = "Eloop is the enterprise conference for hackers! Share experience, projects, or trauma and connect with like-minded people for maximum damage."
 default_language = "en"
 compile_sass = true
 build_search_index = false

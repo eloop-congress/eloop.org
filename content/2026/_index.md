@@ -19,4 +19,4 @@ schedule = [
 ]
 +++
 
-[[short look back at eloop 2026: what happened, what stood out, how many came — goal: someone who missed it sees the conference is alive and wants to come next time]]
+This year's theme was AI in Enterprise, where we looked back at the experience of AI integration and jailbreaking in the last year. As well as the deterioration and restoration of hackers' abilities in presentation, 3D modeling, the new methodology in red-teaming, and the safety of data after the AI apocalypse.
