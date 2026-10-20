@@ -8,7 +8,7 @@
   <meta name="description" content="{{ page?.description or section?.description or config.description }}">
   <meta property="og:title" content="{{ page_title }}">
   <meta property="og:url" content="{{ current_url or config.base_url }}">
-  <link rel="icon" href="/static/images/favicon_2.png">
+  <link rel="icon" type="image/svg+xml" href="/static/images/logo.svg">
   <link rel="stylesheet" href="{{ get_url(path='style.css', cachebust=true) }}">
   <script>
     const accents = {{ config.extra.accents | json_encode | safe }};
@@ -26,7 +26,7 @@
     {%- set current = config.extra.current_edition %}
     {%- set path = current_path or "/" %}
     <nav class="nav">
-      <a class="home" href="/"{% if path == "/" %} aria-current="page"{% endif %}>eloop</a>
+      <a class="home" href="/"{% if path == "/" %} aria-current="page"{% endif %}><img src="/static/images/logo.svg" alt="" class="logo">eloop</a>
       <a href="/{{ current }}/"{% if path == "/" ~ current ~ "/" %} aria-current="page"{% endif %}>{{ current }}</a>
       <a href="/{{ current }}/cfp/"{% if path == "/" ~ current ~ "/cfp/" %} aria-current="page"{% endif %}>Call for papers</a>
       <a href="/editions/"{% if path == "/editions/" %} aria-current="page"{% endif %}>Editions</a>
