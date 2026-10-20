@@ -8,4 +8,4 @@ The conferences 2016 and 2017 were held at shackspace, Stuttgart. For 2018, eloo
 
 ## Organisers
 
-[[who runs eloop and how to reach them (names or handles, contact address) — goal: a visitor with a question, a talk idea or a sponsoring offer knows whom to write]]
+The organizer changes every year. You can reach the current organizer at the following address: spam [at] eloop [dot] org
