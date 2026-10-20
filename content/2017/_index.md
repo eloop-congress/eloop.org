@@ -23,6 +23,36 @@ schedule = [
   { time = "18:00", title = "Wenn die Zeit reif ist (h0uz3)", abstract = "Im Enterprise-Umfeld braucht es eine Weile, bis sich gute Tools und Best Practices durchsetzen. Meist geschieht dies durch ahnungslose Schlipsträger und die Kellernerds Facepalmen, aber sind innerlich doch froh über die Einsicht." },
   { time = "19:00", title = "Aftershow Party", abstract = "Vernichtung des Restsektes, Tschunk und offenes Hacken." },
 ]
+gallery = [
+  { src = "/static/images/2017/ciko_1.jpg", alt = "ciko's talk" },
+  { src = "/static/images/2017/robert_1.jpg", alt = "robert_we's talk" },
+  { src = "/static/images/2017/hadez.jpeg", alt = "hadez's talk" },
+  { src = "/static/images/2017/glaeser.jpeg", alt = "glasses" },
+]
 +++
 
+![Die einzige relevante Enterprise Konferenz kommt zum zweiten mal nach Deutschland, 11.11.17 Stuttgart](/static/images/Banner_17.png)
+
+Die eloop findet unter dem Motto "Wegwerfen, neu machen" zum zweiten Mal in Stuttgart statt. Nach dem durchschlagenden Erfolg im letzten Jahr (Besucher im zweistelligen Bereich und Vorträge!) kann es nur heißen: Höher, schneller und ohne node.js.
+
 Die eloop ist eine Austauschplattform von Hackern in Enterprise Unternehmen. Hier findet man ein offenes Ohr, wenn der Chef mal wieder jQuery auf dem Mainframe installieren möchte oder es Probleme bei der firmenweiten Verteilung von Bitcoin Minern gibt. Dazu gute Vorträge & Geschichten, viel Sekt und nette Menschen. Die eloop ist cybergeprüft und active-active hochverfügbar. Themen sind unter anderem Leidensgeschichten aus dem Unternehmen, wie man dort moderne Softwareentwicklung durchsetzt und der Betrieb von legacy Infrastruktur. Außerdem rennt dein Chef sowieso dauernd auf eine Konferenz - warum also nicht auch du mal.
+
+- **95 % Hacker:** Diese Leute wissen was sie tun
+- **100 % Kein Bullshit:** Ungefilterte Kommentare und Meinungen zu den Themen von morgen
+- **0 € Freier Eintritt:** Erfreuen Sie Ihren CFO und schonen Sie das Reisebudget
+
+Einlass ist ab 10:00, im Anschluss gibt es Meet&Greet mit Sektbegleitung. Der Eintritt ist frei; eine Anmeldung erleichtert uns die Planung der Sektvorräte. Wer möchte, kann einen Zehner in den Hut werfen: [krautfunding@eloop.org](mailto:krautfunding@eloop.org). Kontakt und Fragen: [kontakt@eloop.org](mailto:kontakt@eloop.org).
+
+![eloop fund](/static/images/sponsoren/eloopfund.png)
+
+## Geschichte
+
+Die eloop wurde mit dem Ziel gegründet die besten Teile anderer Enterprise Konfernzen (Sekt) mit der Offenheit eines Hackerspaces zu vereinen. Anstatt leerer Hülsen geht es seit 2016 auf der eloop um das Überleben als Hacker in der lebensfeindlichen Welt der Enterprise-IT. Bereits 2016 zog die eloop mit diesem Versprechen Besucher im zweistelligen Bereich nach Stuttgart, noch mehr Besucher werden 2017 erwartet. Dazu gibt es wie gewohnt einen ausgiebigen Sektempfang und permanente Sektbegleitung während der Veranstaltung.
+
+## Anmeldung
+
+Du kannst die eloop gerne spontan besuchen. Eine Anmeldung erleichtert uns jedoch die Planung. Die eloop ist frei wie in Freiheit. Um sich anzumelden schreibe einfach eine Email an [ticket@eloop.org](mailto:ticket@eloop.org?subject=Anmeldung%20eloop%202.0).
+
+## Rückblick
+
+Doppelt so viele Teilnehmer und Vorträge wie im Jahr zuvor machten aus der kleinen Zusammenkunft eine ernstzunehmende Konferenz, und dank permanenter Sektbegleitung war auch der Seminarraum im shackspace gut gefüllt. Highlights waren die Vorträge von Mark (Vigilantes: When Good Incident Handlers Do Bad Things) und makefu (Windows 2000 ist sicher). Alle Fotos stehen unter [Creative Commons BY-ND](https://creativecommons.org/licenses/by-nd/4.0/); Highlights gibt es unter dem [Hashtag #eloop2017](https://twitter.com/search?q=%23eloop2017).

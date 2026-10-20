@@ -36,7 +36,9 @@
 {%- for p in section.pages %}
 {%- if p.slug == "cfp" %}
 <h2><a href="{{ p.permalink }}">Call for papers</a></h2>
+{%- if p.extra?.deadlines or not over %}
 {{<deadlines cfp={p} />}}
+{%- endif %}
 {%- endif %}
 {%- endfor %}
 
