@@ -76,7 +76,8 @@ h1 a, h2 a { color: inherit; text-decoration-color: var(--accent); }
   margin-bottom: 2rem;
   a { color: $fg; text-decoration: none; }
   a:hover, a[aria-current] { text-decoration: underline; text-decoration-color: var(--accent); text-decoration-thickness: 3px; }
-  .home { font-weight: 700; margin-right: auto; }
+  .home { display: inline-flex; align-items: center; gap: 0.5rem; font-weight: 700; margin-right: auto; }
+  .logo { height: 1.75rem; }
 }
 
 /* hero */
@@ -143,6 +144,9 @@ pre {
   overflow-x: auto;
   font-size: 0.85rem;
 }
+
+/* inline images are black-on-white artwork: keep them small, and legible on the dark page */
+main p img { display: block; max-width: min(100%, 360px); height: auto; background: #fff; padding: 0.25rem; }
 
 .gallery {
   display: grid;
