@@ -19,4 +19,4 @@ schedule = [
 ]
 +++
 
-The ELOOP 2025 conference featured an outstanding program of talks showcasing high-quality contributions, clear technical vision, and consistently strong execution. We extend our sincere thanks to all speakers and authors for their participation, preparation, and commitment to delivering a cohesive and impactful conference experience. Their contributions form the foundation of the proceedings presented here.
+The eloop 2025 conference featured an outstanding program of talks showcasing high-quality contributions, clear technical vision, and consistently strong execution. We extend our sincere thanks to all speakers and authors for their participation, preparation, and commitment to delivering a cohesive and impactful conference experience. Their contributions form the foundation of the proceedings presented here.

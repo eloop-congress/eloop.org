@@ -1,6 +1,6 @@
 base_url = "https://eloop.org"
 title = "eloop"
-description = "Eloop is the enterprise conference for hackers! Share experience, projects, or trauma and connect with like-minded people for maximum damage."
+description = "eloop is the enterprise conference for hackers! Share experience, projects, or trauma and connect with like-minded people for maximum damage."
 default_language = "en"
 compile_sass = true
 build_search_index = false
