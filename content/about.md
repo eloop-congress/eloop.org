@@ -9,3 +9,7 @@ The conferences 2016 and 2017 were held at shackspace, Stuttgart. For 2018, eloo
 ## Organisers
 
 The organizer changes every year. You can reach the current organizer at the following address: spam [at] eloop [dot] org
+
+## Code of conduct
+
+We follow the Code of codex of the c-base e.V.: https://wiki.c-base.org/dokuwiki/C-Miteinander

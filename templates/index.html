@@ -2,7 +2,6 @@
 
 {% block content %}
 {%- set ed = get_section(path=config.extra.current_edition ~ "/_index.md") %}
-{%- set cfp = get_page(path=config.extra.current_edition ~ "/cfp.md", allow_missing=true) %}
 {#- the switch happens at build time; the daily deploy keeps it current #}
 {%- set over = ed.extra?.date and ed.extra.date < now() | date(format="%Y-%m-%d") %}
 <p class="catchline">eloop</p>
@@ -14,11 +13,9 @@
 {%- if over %}
 <h1><a href="{{ ed.permalink }}">{{ ed.title }}</a></h1>
 {{ ed.content | safe }}
-{%- set proceedings_path = ed.relative_path | replace(from="_index.md", to="proceedings/_index.md") %}
-{%- if proceedings_path in ed.subsections %}
-{%- set proceedings = get_section(path=proceedings_path) %}
-<h2><a href="{{ proceedings.permalink }}">Proceedings</a></h2>
-{{<papers proceedings={proceedings} />}}
+{%- if ed.extra?.proceedings %}
+<h2><a href="{{ ed.permalink }}#proceedings">Proceedings</a></h2>
+{{<papers papers={ed.extra.proceedings.papers} permalink={ed.permalink} />}}
 {%- endif %}
 {%- else %}
 <h1>Attend</h1>
@@ -34,16 +31,13 @@
 {{<schedule items={ed.extra.schedule} />}}
 {%- endif %}
 
-{%- if cfp %}
+{%- if ed.extra?.cfp %}
 <h1>Call for papers</h1>
-{{ cfp.content | safe }}
-<h2>Deadlines</h2>
-{{<deadlines cfp={cfp} />}}
-<p><a href="{{ cfp.permalink }}">Submission guidelines</a></p>
+{{<cfp cfp={ed.extra.cfp} over={over} />}}
 {%- endif %}
 {%- endif %}
 
-<h1>Past editions</h1>
+<h1 id="past-editions">Past editions</h1>
 {{<editions venues={config.extra.venues} skip={0 if over else config.extra.current_edition | int} />}}
 
 <h1>Sponsors</h1>

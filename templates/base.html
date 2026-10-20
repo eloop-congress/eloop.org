@@ -28,8 +28,8 @@
     <nav class="nav">
       <a class="home" href="/"{% if path == "/" %} aria-current="page"{% endif %}><img src="/static/images/logo.svg" alt="" class="logo">eloop</a>
       <a href="/{{ current }}/"{% if path == "/" ~ current ~ "/" %} aria-current="page"{% endif %}>{{ current }}</a>
-      <a href="/{{ current }}/cfp/"{% if path == "/" ~ current ~ "/cfp/" %} aria-current="page"{% endif %}>Call for papers</a>
-      <a href="/editions/"{% if path == "/editions/" %} aria-current="page"{% endif %}>Editions</a>
+      <a href="/{{ current }}/#cfp">Call for papers</a>
+      <a href="/#past-editions">Editions</a>
       <a href="/about/"{% if path == "/about/" %} aria-current="page"{% endif %}>About</a>
     </nav>
 
@@ -40,7 +40,7 @@
     <footer>
       <a href="https://twitter.com/{{ config.extra.twitter }}">@{{ config.extra.twitter }}</a>
       <span>{{ config.extra.irc }}</span>
-      <a href="/code-of-conduct/">Code of conduct</a>
+      <a href="/about/#code-of-conduct">Code of conduct</a>
       <a href="https://github.com/eloop-congress/eloop.org">Source</a>
     </footer>
   </div>
