@@ -54,22 +54,34 @@
   </table>
 {% endcomponent schedule %}
 
-{% component deadlines(cfp) %}
-  {%- if cfp.extra?.deadlines %}
-  <ul>
-    {%- for d in cfp.extra.deadlines %}<li>{{ d.label }}: {{ d.date }}</li>{% endfor %}
-  </ul>
+{% component cfp(cfp, over) %}
+  {{ cfp.text | markdown | safe }}
+  {%- if cfp?.guidelines %}
+  <p>
+    Please follow the submission guidelines at <a href="{{ cfp.guidelines }}">{{ cfp.guidelines | replace(from="https://", to="") }}</a>.
+    Please send your submissions to <a href="mailto:{{ cfp.submit_to }}">{{ cfp.submit_to }}</a>.
+  </p>
   {%- else %}
+  <p><a href="mailto:{{ cfp.submit_to }}">{{ cfp.submit_to }}</a></p>
+  {%- endif %}
+  {%- if cfp?.deadlines %}
+  <h3>Deadlines</h3>
+  <ul>
+    {%- for d in cfp.deadlines %}<li>{{ d.label }}: {{ d.date }}</li>{% endfor %}
+  </ul>
+  {%- elif not over %}
+  <h3>Deadlines</h3>
   <p>TBA</p>
   {%- endif %}
-{% endcomponent deadlines %}
+{% endcomponent cfp %}
 
-{% component papers(proceedings) %}
+{# links to the papers of an edition page #}
+{% component papers(papers, permalink) %}
   <ul class="papers">
-    {%- for paper in proceedings.pages %}
+    {%- for paper in papers %}
     <li>
-      {{ [a.name for a in paper.extra.authors] | join(sep=", ") }}: <a href="{{ paper.permalink }}">“{{ paper.title }}”</a>
-      [<a href="{{ paper.extra.pdf }}">PDF</a>]
+      {{ [a.name for a in paper.authors] | join(sep=", ") }}: <a href="{{ permalink }}#{{ paper.id }}">“{{ paper.title }}”</a>
+      [<a href="{{ paper.pdf }}">PDF</a>]
     </li>
     {%- endfor %}
   </ul>
@@ -87,7 +99,7 @@
       <td><a href="{{ ed.permalink }}">{{ ed.extra.year }}</a></td>
       <td>{{<when edition={ed} />}}</td>
       <td>{{<venue edition={ed} venues={venues} />}}</td>
-      <td>{% if ed.subsections %}<a href="{{ ed.permalink }}proceedings/">Proceedings</a>{% endif %}</td>
+      <td>{% if ed.extra?.proceedings %}<a href="{{ ed.permalink }}#proceedings">Proceedings</a>{% endif %}</td>
     </tr>
     {%- endif %}
     {%- endfor %}

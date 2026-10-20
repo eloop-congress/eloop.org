@@ -26,21 +26,40 @@
 </ul>
 {%- endif %}
 
-{%- set proceedings_path = section.relative_path | replace(from="_index.md", to="proceedings/_index.md") %}
-{%- if proceedings_path in section.subsections %}
-{%- set proceedings = get_section(path=proceedings_path) %}
-<h2><a href="{{ proceedings.permalink }}">Proceedings</a></h2>
-{{<papers proceedings={proceedings} />}}
+{%- if section.extra?.proceedings %}
+{%- set proceedings = section.extra.proceedings %}
+<h2 id="proceedings">Proceedings</h2>
+{{ proceedings.intro | markdown | safe }}
+{%- for p in proceedings.papers %}
+<h3 id="{{ p.id }}">{{ p.title }}</h3>
+<p>
+  {%- for a in p.authors %}
+  {{ a.name }}{% if a?.affiliation %} <span class="meta">({{ a.affiliation }})</span>{% endif %}{% if not loop.last %}<br>{% endif %}
+  {%- endfor %}
+</p>
+<p class="meta"><a href="{{ p.pdf }}">PDF</a>{% if p?.pages %} · {{ p.pages }} pages{% endif %}</p>
+{{ p.abstract | markdown | safe }}
+<details>
+<summary>Cite</summary>
+<pre>@inproceedings{ {{- p.id }}{{ section.extra.year }},
+  author    = { {{- [a.name for a in p.authors] | join(sep=" and ") }}},
+  title     = { {{- p.title }}},
+  booktitle = {Proceedings of {{ section.title }}},
+  year      = { {{- section.extra.year }}},
+  address   = { {{- config.extra.venues[section.extra.venue].city }}, Germany},
+{%- if p?.pages %}
+  numpages  = { {{- p.pages }}},
+{%- endif %}
+  url       = { {{- config.base_url ~ p.pdf }}},
+}</pre>
+</details>
+{%- endfor %}
 {%- endif %}
 
-{%- for p in section.pages %}
-{%- if p.slug == "cfp" %}
-<h2><a href="{{ p.permalink }}">Call for papers</a></h2>
-{%- if p.extra?.deadlines or not over %}
-{{<deadlines cfp={p} />}}
+{%- if section.extra?.cfp %}
+<h2 id="cfp">Call for papers</h2>
+{{<cfp cfp={section.extra.cfp} over={over} />}}
 {%- endif %}
-{%- endif %}
-{%- endfor %}
 
 {%- if section.extra?.board %}
 <h2>Board of Directors</h2>
